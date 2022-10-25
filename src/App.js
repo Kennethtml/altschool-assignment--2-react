@@ -1,29 +1,26 @@
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import AboutComponent from "./components/abotComponenet";
 
-import './App.css';
-import { Routes,Route } from 'react-router-dom';
-
-import Nav from './components/Nav';
-import Home from './pages/Home';
-import Users from './pages/Users';
-import About from './pages/About';
-import Error from './pages/Error';
+import Nav from "./components/Nav";
+import Home from "./pages/Home";
+import Users from "./pages/Users";
+import About from "./pages/About";
+import Error from "./pages/Error";
+import Mission from "./pages/Mission";
 
 function App() {
   return (
-    <div className='app'>
+    <div className="app">
+      <Nav />
 
-    <Routes>
-      <Route path="/" element={<Nav />}>
-        <Route path="/" element={<Home />} />
-        <Route path='/about' element={<About />} >
-          <Route path ={'/about/mission'} element={<h2>mission</h2>}/>
-        </Route>
-        <Route path="/users" element={<Users />} />
-        <Route path="/*" element={<Error/>}/>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="about/*" element={<AboutComponent />} />
 
-        {/* <Route path="/Products" element={<Products />} /> */}
-      </Route>
-    </Routes>
+        <Route path="users" element={<Users />} />
+        <Route path="/*" element={<Error />} />
+      </Routes>
     </div>
   );
 }
